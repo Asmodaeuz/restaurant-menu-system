@@ -22,9 +22,9 @@ export default function BotaoOrdenador(props: Props) {
             >
                 {ordem ? "Crescente" : "Decrescente"}
                 {ordem ?
-                <ImSortAmountAsc size={20} /> :
-                <ImSortAmountDesc size={20} />
-            }
+                    <ImSortAmountAsc size={20} /> :
+                    <ImSortAmountDesc size={20} />
+                }
             </button>
         </div>
     )

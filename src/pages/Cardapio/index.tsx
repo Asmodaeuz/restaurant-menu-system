@@ -1,5 +1,4 @@
 import styles from "./Cardapio.module.scss"
-import { ReactComponent as Logo } from "assets/logo.svg"
 import Buscador from "./Buscador"
 import { useState } from "react"
 import Filtros from "./Filtros"
@@ -7,6 +6,7 @@ import Ordenador from "./Ordenador"
 import Itens from "./Itens"
 import { TipoOpcoes } from "./Ordenador/types/TipoOpcoes"
 import BotaoOrdenador from "./Ordenador/BotaoOrdenador"
+import stylesTema from "styles/Tema.module.scss"
 
 export default function Cardapio() {
     const [busca, setBusca] = useState("")
@@ -15,27 +15,15 @@ export default function Cardapio() {
     const [ordem, setOrdem] = useState(true)
 
     return (
-        <main>
-            <nav className={styles.menu}>
-                <Logo />
-            </nav>
-
-            <header className={styles.header}>
-                <div className={styles.header__text}>
-                    A casa do código e da massa
-                </div>
-            </header>
-
-            <section className={styles.cardapio}>
-                <h3 className={styles.cardapio__titulo}>Cardápio</h3>
-                <Buscador busca={busca} setBusca={setBusca} />
-                <div className={styles.cardapio__filtros}>
-                    <Filtros filtro={filtro} setFiltro={setFiltro} />
-                    <Ordenador ordenador={ordenador} setOrdenador={setOrdenador} />
-                    <BotaoOrdenador ordem={ordem} setOrdem={setOrdem} />
-                </div>
-                <Itens busca={busca} filtro={filtro} ordenador={ordenador} ordem={ordem} />
-            </section>
-        </main>
+        <section className={styles.cardapio}>
+            <h3 className={stylesTema.cardapio__titulo}>Cardápio</h3>
+            <Buscador busca={busca} setBusca={setBusca} />
+            <div className={styles.cardapio__filtros}>
+                <Filtros filtro={filtro} setFiltro={setFiltro} />
+                <Ordenador ordenador={ordenador} setOrdenador={setOrdenador} />
+                <BotaoOrdenador ordem={ordem} setOrdem={setOrdem} />
+            </div>
+            <Itens busca={busca} filtro={filtro} ordenador={ordenador} ordem={ordem} />
+        </section>
     )
 }

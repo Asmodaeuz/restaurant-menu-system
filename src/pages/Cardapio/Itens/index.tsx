@@ -1,7 +1,8 @@
-import cardapio from "./itens.json"
+import cardapio from "data/cardapio.json"
 import Item from "./Item"
 import styles from "./Itens.module.scss"
 import { useEffect, useState } from "react"
+import { Cardapio } from "types/Prato"
 
 interface Props {
     busca: string,
@@ -15,7 +16,7 @@ export default function Itens(props: Props) {
     const { busca, filtro, ordenador, ordem } = props
 
     function testaBusca(title: string) {
-        const regex = new RegExp(busca, 'i')
+        const regex = new RegExp(busca, "i")
         return regex.test(title)
     }
 
@@ -24,9 +25,9 @@ export default function Itens(props: Props) {
         return true
     }
 
-    function ordenar(novaLista: typeof cardapio) {
+    function ordenar(novaLista: Cardapio) {
         const ordenaPropriedadeCrescente = (
-            lista: typeof cardapio,
+            lista: Cardapio,
             propriedade: "size" | "serving" | "price"
         ) => {
             if(ordem) return lista.sort((a, b) => a[propriedade] > b[propriedade] ? 1 : -1)
@@ -34,14 +35,14 @@ export default function Itens(props: Props) {
         }
 
         switch(ordenador) {
-            case "porcao":
-                return ordenaPropriedadeCrescente(novaLista, "size")
-            case "qtd_pessoas":
-                return ordenaPropriedadeCrescente(novaLista, "serving")
-            case "preco":
-                return ordenaPropriedadeCrescente(novaLista, "price")
-            default: 
-                return novaLista
+        case "porcao":
+            return ordenaPropriedadeCrescente(novaLista, "size")
+        case "qtd_pessoas":
+            return ordenaPropriedadeCrescente(novaLista, "serving")
+        case "preco":
+            return ordenaPropriedadeCrescente(novaLista, "price")
+        default: 
+            return novaLista
         }
     }
 
