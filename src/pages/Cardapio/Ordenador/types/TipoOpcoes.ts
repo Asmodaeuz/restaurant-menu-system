@@ -1,0 +1,1 @@
+export type TipoOpcoes = "" | "porcao" | "qtd_pessoas" | "preco"
